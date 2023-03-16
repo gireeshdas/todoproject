@@ -1,0 +1,41 @@
+{%extends 'base.html'%}
+{%block body_block%}
+
+<div class="container">
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            {%if messages%}
+            {%for m in messages%}
+
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                <strong>{{m}}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            {%endfor%}
+            {%endif%}
+        </div>
+
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+                <h2>Welcome User {{request.user}} !!!</h2>
+                <a href="{%url 'signout'%}">Logout</a>
+                <a href="{%url 'add-todo'%}">AddYourtodos</a>
+                <a href="{%url 'todos-list'%}">ListTodos</a>
+            </div>
+            <div class="col-4"></div>
+
+        </div>
+        <div class="row">
+            <div class="col-4">
+                <h3>Pending Todos</h3>
+                {{todos}}
+            </div>
+            <div class="col-4">
+
+            </div>
+            <div class="col-4"></div>
+        </div>
+    </div>
+    {%endblock%}
